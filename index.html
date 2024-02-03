@@ -4,28 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transformaciones Animadas</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
 </head>
 <body>
 
-<div id="rotacion">
-    <h2>Rotación</h2>
-    <img src="gif/rotacion.gif" alt="Rotación">
-</div>
+<section>
+    <span>
+        Algebra lineal<br>
+        <br>
+        Transformaciones lineales<br>
+        <span class="small-text">
+            Docente: Guillermo Paucar Carlos<br>
+            Alumno: Rossbel Huaylla Huillca
+        </span>
+    </span>
+</section>
 
-<div id="expansion">
-    <h2>Expansión</h2>
-    <img src="gif/expansion.gif" alt="Expansión">
-</div>
+<header>
+    <nav>
+        <a href="#transformaciones-2d">Transformaciones en 2D</a>
+        <a href="#aplicacion-transformaciones">Aplicacion de Transformaciones</a>
+    </nav>
+</header>
 
-<div id="achicamiento">
-    <h2>Achicamiento</h2>
-    <img src="gif/achicamiento.gif" alt="Achicamiento">
-</div>
+<section id="transformaciones-2d">
+<h2>Transformaciones en 2D</h2>
+    <article>
+        <h1>Definicion</h1>
+        <p>
+            Una transformación lineal es una función entre dos espacios vectoriales que preserva las operaciones de suma vectorial y multiplicación por escalares. 
+            Formalmente, sea V y W dos espacios vectoriales sobre un mismo campo F, una función T:V→W se considera una transformación lineal si cumple con las siguientes dos 
+            propiedades para todo u,v en V y todo escalar c en F:<br>
+            Aditividad: T(u + v) = T(u) + T(v)<br>
+            Homogeneidad: T(cu) = cT(u)<br>
+            Estas propiedades aseguran que la transformación lineal preserva las operaciones fundamentales en los espacios vectoriales, es decir, la suma de vectores y 
+            la multiplicación por escalares. En otras palabras, la imagen de la suma de dos vectores es igual a la suma de las imágenes de cada vector por separado, y la 
+            imagen del producto de un vector por un escalar es igual al producto del escalar por la imagen del vector.
+            Las transformaciones lineales son fundamentales en álgebra lineal y tienen una amplia variedad de aplicaciones en matemáticas y ciencias aplicadas. Pueden 
+            representarse mediante matrices, lo que facilita su análisis y manipulación.<br>
+            <br>
+            Usaremos Python para ejecutar y graficar las figuras.
+            La siguiente función de transformacion dibuja una cara y un cuerpo, luego aplica una transformación lineal representada por la matriz A y muestra el resultado en un gráfico. 
+            El ejemplo de uso usa una matriz de identidad para una transformación inicial.
+        </p>
+    </article>
 
-<div id="deformacion">
-    <h2>Deformación</h2>
-    <img src="gif/deformacion.gif" alt="Deformación">
-</div>
+    <div id="contenedor">
+        <pre>
+            <code class="python" id="codigo-1">
+    import numpy as np
+    import matplotlib.pyplot as plt
 
+    def transformacion(A):
+    # Dibuja la cara
+    t = np.arange(-3, 3, 0.01)
+    x = np.cos(t) + 1
+    y = np.sin(t) + 1
+    plt.plot(x, y, 'r')
+
+    # Dibuja el cuerpo
+    x1 = np.array([4, 1, 0, 1, 1, 1, -1, 1, 3, 4])
+    y1 = np.array([-2, 0, -2, -3, 0, -4, -8, -4, -5, -8])
+    plt.plot(x1, y1, 'r')
+
+    # Forma la matriz de puntos
+    Pcara = np.vstack((x, y))
+    Pcuerpo = np.vstack((x1, y1))
+
+    # Aplica una transformación lineal de R2 en R2 cuya matriz asociada es la ingresada A
+    Imcara = np.dot(A, Pcara)
+    Imcuerpo = np.dot(A, Pcuerpo)
+
+    xim, yim = Imcara[0, :], Imcara[1, :]
+    x1im, y1im = Imcuerpo[0, :], Imcuerpo[1, :]
+
+    plt.plot(xim, yim, x1im, y1im, 'b')
+    plt.grid()
+    plt.axis('equal')
+    plt.show()
+
+    # Ejemplo de uso
+    # Ingresa la matriz asociada A desde el teclado
+    A = np.array([[1, 0],
+                  [0, 1]])
+    transformacion(A)</code>
+        </pre>
+    </div>
+
+    <div id="contenedor1">
+        <div id="codigo-python">
+            <h2>Rotación</h2>
+            <p>
+                El siguiente código crea una animación en Matplotlib que muestra la transformación de un círculo y una forma irregular mediante una secuencia de transformaciones lineales. 
+                La función transformacion_animada toma una lista de matrices de transformación y genera la animación.
+            </p>
+            <pre>
+                <code class="python"> 
+    # Crear una lista de matrices de transformación para cada animación
+    rotar_animacion = [np.array([[np.cos(theta), -np.sin(theta)],
+                                 [np.sin(theta), np.cos(theta)]]) for theta in np.linspace(5, 2*np.pi, 100)]
+
+    # Crear y mostrar animaciones
+    transformacion_animada(rotar_animacion, 'Rotación')</code>
+            </pre>
+
+            <img src="gif/rotacion.gif" alt="Rotación">
+        </div>
+    </div>
+
+
+    <div id="contenedor2">
+        <div id="codigo-python">
+            <h2>Expancion</h2>
+            <p>
+                El siguiente código crea una animación en Matplotlib que muestra la transformación de un círculo y una forma irregular mediante una secuencia de transformaciones lineales. 
+                La función transformacion_animada toma una lista de matrices de transformación y genera la animación.
+            </p>
+            <pre>
+                <code class="python"> 
+    # Crear una lista de matrices de transformación para cada animación
+    expandir_animacion = [np.array([[1 + 0.03 * i, 0],
+                                    [0, 0.8 + 0.03 * i]]) for i in range(100)]
+    
+    # Crear y mostrar animaciones
+    transformacion_animada(expandir_animacion, 'Expansión')</code>
+            </pre>
+
+            <img src="gif/expansion.gif" alt="Rotación">
+        </div>
+    </div>
+
+
+    <div id="contenedor3">
+        <div id="codigo-python">
+            <h2>Achicar</h2>
+            <p>
+                El siguiente código crea una animación en Matplotlib que muestra la transformación de un círculo y una forma irregular mediante una secuencia de transformaciones lineales. 
+                La función transformacion_animada toma una lista de matrices de transformación y genera la animación.
+            </p>
+            <pre>
+                <code class="python"> 
+    # Crear una lista de matrices de transformación para cada animación
+    achicar_animacion = [np.array([[0.9 - 0.01 * i, 0],
+                                   [0, 0.9 - 0.01 * i]]) for i in range(100)]
+    
+    # Crear y mostrar animaciones
+    transformacion_animada(achicar_animacion, 'Achicamiento')</code>
+            </pre>
+
+            <img src="gif/achicamiento.gif" alt="Rotación">
+        </div>
+    </div>
+
+    <div id="contenedor4">
+        <div id="codigo-python">
+            <h2>Rotación</h2>
+            <p>
+                El siguiente código crea una animación en Matplotlib que muestra la transformación de un círculo y una forma irregular mediante una secuencia de transformaciones lineales. 
+                La función transformacion_animada toma una lista de matrices de transformación y genera la animación.
+            </p>
+            <pre>
+                <code class="python"> 
+    # Crear una lista de matrices de transformación para cada animación
+    deformar_animacion = [np.array([[1, 0.5 * np.sin(theta)],
+                                    [0, 1]]) for theta in np.linspace(0, 2*np.pi, 100)]
+    
+    # Crear y mostrar animaciones
+    transformacion_animada(deformar_animacion, 'Deformación')</code>
+            </pre>
+
+            <img src="gif/deformacion.gif" alt="Rotación">
+        </div>
+    </div>
+</section>
+
+<section id="aplicacion-transformaciones">
+    <p>Aplicaciones de transformaciones</p>
+
+</section>
+<button id="cipherButton">Cifrar/Descifrar</button>
+<script src="main.js"></script>
 </body>
 </html>

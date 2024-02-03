@@ -1,0 +1,130 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-kerning: auto;
+}
+
+html {
+    font-size: 10pt;
+    line-height: 1.4;
+    font-weight: 400;
+    font-family: 'Source Sans Pro', 'Open Sans', Roboto, 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Myriad Pro', 'Segoe UI', Myriad, Helvetica, 'Lucida Grande', 'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: #ffffff; /*color de todo el texto*/
+}
+
+#rotacion,
+#expansion,
+#achicamiento,
+#deformacion {
+    text-align: center;
+    margin: 20px;
+}
+
+#rotacion img,
+#expansion img,
+#achicamiento img,
+#deformacion img {
+    max-width: 100%;
+    height: auto;
+}
+
+section {
+    height: 40vh;
+    background: rgb(110, 209, 140);
+}
+
+section span {
+    margin: 0;
+    font-size: 400%;
+    text-align: center;
+    line-height: 1;
+    padding-top: calc(10vh - 20pt);
+    display: block;
+    font-weight: 700;
+}
+
+section span .small-text {
+    font-size: 50%; /* Ajusta el tamaño de fuente según tus preferencias */
+    padding-top: calc(5vh - 20pt);
+}
+
+header {
+    width: 100%;
+    padding: 1em;
+    font-size: 140%;
+    text-align: center; /* Añadido para centrar los elementos en el header */
+}
+
+header nav {
+    text-align: center;
+}
+
+header nav a {
+    display: inline-block;
+    outline: none;
+    text-decoration: none;
+    opacity: .7;
+    padding: 10px 15px;
+    margin: 0 5px;
+    color: black;
+    border: 1px solid #000;
+    transition: opacity .2s ease-in-out;
+}
+
+header nav a:hover,
+header nav a:focus {
+    opacity: 1;
+    background-color: #f0f0f0;
+}
+
+article {
+    margin: 5em auto 0;
+    padding: 1em;
+    font-size: 140%;
+    max-width: auto;
+    box-shadow: rgba(0,0,0,.05) 0 3px 15px;
+}
+
+article p {
+    margin: 0;
+    color: #333;
+}
+
+article p + p {
+    margin-top: .7em;
+}
+
+@media (min-width: 500px) {
+    header {
+        text-align: center; /* Corregido para centrar en lugar de izquierda */
+    }
+    header nav {
+        display: block; /* Cambiado de float a block */
+        text-align: center; /* Añadido para centrar los enlaces dentro del nav */
+    }
+    header nav a {
+        display: block; /* Hace que los enlaces en el nav sean bloques para centrarlos */
+    }
+    article {
+        margin: 3.5em auto 0;
+        padding: 2em;
+    }
+}
+
+@media (min-width: 800px) {
+    article {
+        margin: 3.5em auto;
+    }
+}
+
+
+

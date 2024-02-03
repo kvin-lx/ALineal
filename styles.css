@@ -1,0 +1,93 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+section {
+    text-align: center;
+    padding: 20px;
+    background: #eee;
+}
+
+section span {
+    line-height: 1;
+    font-size: 200%;
+    text-align: center;
+    padding-top: calc(10vh - 20pt);
+    font-weight: 700;
+}
+
+section span .small-text {
+    font-size: 50%; /* Ajusta el tamaño de fuente según tus preferencias */
+    padding-top: calc(5vh - 20pt);
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 10px;
+}
+
+article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: justify;
+}
+
+pre {
+    background-color: #f0f0f0;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+code {
+    color: #333;
+}
+
+#contenedor,
+#contenedor1,
+#contenedor2,
+#contenedor3,
+#contenedor4 {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: left;
+}
+
+#codigo-python {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#codigo-python h2 {
+    color: #333;
+}
+
+#codigo-python p {
+    text-align: justify;
+}
+
+#codigo-python img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+
